@@ -24,7 +24,7 @@ public class MovementByClick : MonoBehaviour, IPointerClickHandler
 
 
     public void OnPointerClick(PointerEventData eventdata)
-    {
+    {//777
         StartCoroutine(MoveObject(new Vector3(transform.position.x,1, transform.position.z)));
     } 
    
