@@ -11,8 +11,14 @@ public class MovementByClick : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator MoveObject(Vector3 target)
     {
+        bool fly = false;
         while (Vector3.Distance(player.position, target) > 0.1f)
         {
+            if (fly == false)
+            {
+                target.y += 0.1f;
+                fly = true;
+            }
             float speed = aids * Time.deltaTime;
             player.localPosition = Vector3.Lerp(player.localPosition, target, speed);
 
@@ -24,19 +30,12 @@ public class MovementByClick : MonoBehaviour, IPointerClickHandler
 
 
     public void OnPointerClick(PointerEventData eventdata)
-    {//777
-        StartCoroutine(MoveObject(new Vector3(transform.position.x,1, transform.position.z)));
+    {
+        Vector3 target = new Vector3(transform.position.x, 0f, transform.position.z);
+        if (Vector3.Distance(player.position, target) <= 1.3)
+        {
+            StartCoroutine(MoveObject(target));
+        }
     } 
    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
