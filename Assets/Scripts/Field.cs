@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Field : MonoBehaviour,IGet
 {
-    Cell[][] coordNet=new Cell[SIZE][];
-    const int SIZE = 10; // размер поля
+    private const int SIZE = Config.SIZE;// размер поля
+    Cell[][] coordNet = new Cell[SIZE][];
+
     [SerializeField] private GameObject cubePrefab;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Transform cubeField;
@@ -17,24 +18,14 @@ public class Field : MonoBehaviour,IGet
         return Mathf.Min(Mathf.Min(x, SIZE - x - 1), Mathf.Min(y, SIZE - y - 1));
     }
 
-    // возвращает объект игровой клетки по координатам
+    // возвращает класс игровой клетки по координатам
     public Cell getObject(int x, int y)
     {
         return coordNet[x][y];
     }
 
-    // возращает материал клетки при создании по её координатам
-    public Material getMaterial(int x, int y)
-    {
-        return materials[getLevel(x,y)];
-
-    }
-    public int getIndex(int x,int y)
-    {
-        return getLevel(x, y);
-    }
     // устанавливает материал клетки по её координатам
-    public void setColor(int x, int y, Material mat)
+    public void setMaterial(int x, int y, Material mat)
     {
         getObject(x, y).material = mat;
     }
@@ -53,27 +44,50 @@ public class Field : MonoBehaviour,IGet
     public void setCoinCount(int x,int y,int count)
     {
         getObject(x, y).countCoin=count;
+    }
 
-    }
-    public void addElementToCell(int x,int y,string type)
+
+    //элементы на клетке
+
+    //получить словарь с количеством объекта каждого типа
+    public Dictionary<string,int> getDict(int x,int y)
     {
-        getObject(x, y).elements.TryGetValue(type,out int count);
-        getObject(x, y).elements.Add(type, count++);
+        return getObject(x, y).elements;
     }
+
+    //возвращает есть ли элемент в клетке
+    public bool isElementInCell(int x, int y, string type)
+    {
+        return getDict(x,y).ContainsKey(type);
+    }
+    
+    //возвращает количество элементов в клетке
     public int countElements(int x, int y, string type)
     {
-        getObject(x, y).elements.TryGetValue(type, out int count);
-        return count;
+        if (isElementInCell(x, y, type)) {
+            getDict(x, y).TryGetValue(type, out int count);
+            return count;
+        }
+        return -1;
 
     }
+
+    //добавить элемент на клетку
+    public void addElementToCell(int x,int y,string type)
+    {
+        if(countElements(x,y,type)>0)
+        {
+            getDict(x, y)[type]++;
+        }
+        else getDict(x, y).Add(type, 1);
+        
+    }
+
+    //удалить элемент с клетки
     public void deleteElementFromCell(int x, int y, string type)
     {
         int count = countElements(x, y, type);
         getObject(x, y).elements.Add(type,count--);
-    }
-    public bool isElementInCell(int x,int y,string type)
-    {
-        return countElements(x, y, type) > 0;
     }
 
 
@@ -88,8 +102,7 @@ public class Field : MonoBehaviour,IGet
             {
                 GameObject cube = Instantiate(cubePrefab, new Vector3(i, 0, j), Quaternion.identity, cubeField);
                 coordNet[i][j] = cube.GetComponent<Cell>();
-                Material mat = getMaterial(i, j);
-                setColor(i, j, mat);
+                //setColor(i, j, mat);
             }
         }
 
