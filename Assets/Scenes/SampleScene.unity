@@ -163,16 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b755f9524fb85a41aa3ee8eb5a125c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confObj: {fileID: 906644175}
   cubePrefab: {fileID: 4434183213483943795, guid: 31ead5c418af84142a5795774b4a67cc, type: 3}
   coinPrefab: {fileID: 7042462938848942815, guid: 1c764e7581c6e9246a5260b69b940aa7, type: 3}
   cubeField: {fileID: 638475344}
   coinField: {fileID: 885158055}
-  materials:
-  - {fileID: 2100000, guid: 04da52fcff48d2748a7e0422c07871a1, type: 2}
-  - {fileID: 2100000, guid: 281d0e41beee1434ab0e2ab609b954df, type: 2}
-  - {fileID: 2100000, guid: 4cda8241ce2bcc54e96145e35394847d, type: 2}
-  - {fileID: 2100000, guid: f73483774b125be41842502d672645e5, type: 2}
-  - {fileID: 2100000, guid: f6cf7ba46263f7b4e952bd909a166ccf, type: 2}
 --- !u!1 &397204234
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +426,7 @@ GameObject:
   - component: {fileID: 906644177}
   - component: {fileID: 906644176}
   m_Layer: 0
-  m_Name: Con
+  m_Name: Config
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -449,6 +444,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694b33c8966265445b2d5e9ede34ef43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 04da52fcff48d2748a7e0422c07871a1, type: 2}
+  - {fileID: 2100000, guid: 281d0e41beee1434ab0e2ab609b954df, type: 2}
+  - {fileID: 2100000, guid: 4cda8241ce2bcc54e96145e35394847d, type: 2}
+  - {fileID: 2100000, guid: f73483774b125be41842502d672645e5, type: 2}
+  - {fileID: 2100000, guid: f6cf7ba46263f7b4e952bd909a166ccf, type: 2}
 --- !u!4 &906644177
 Transform:
   m_ObjectHideFlags: 0

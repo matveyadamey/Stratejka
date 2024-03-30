@@ -5,4 +5,5 @@ using UnityEngine;
 public class Config : MonoBehaviour
 {
     public const int SIZE = 10;
+    public Material[] materials;
 }

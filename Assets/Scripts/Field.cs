@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Field : MonoBehaviour,IGet
+public class Field : MonoBehaviour
 {
+    [SerializeField] private GameObject confObj;
     private const int SIZE = Config.SIZE;// размер поля
+    private Material[] materials;
     Cell[][] coordNet = new Cell[SIZE][];
 
     [SerializeField] private GameObject cubePrefab;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Transform cubeField;
     [SerializeField] private Transform coinField;
-    [SerializeField] private Material[] materials;
     // возвращает номер контура
     public int getLevel(int x, int y)
     {
@@ -94,6 +95,7 @@ public class Field : MonoBehaviour,IGet
     // СОЗДАНИЕ ПОЛЯ и ЗАПОЛНЕНИЕ МОНЕТКАМИ
     void Start()
     {
+        materials = confObj.GetComponent<Config>().materials;
         // создание поля
         for (int i = 0; i < SIZE; i++) 
         {
@@ -102,7 +104,7 @@ public class Field : MonoBehaviour,IGet
             {
                 GameObject cube = Instantiate(cubePrefab, new Vector3(i, 0, j), Quaternion.identity, cubeField);
                 coordNet[i][j] = cube.GetComponent<Cell>();
-                //setColor(i, j, mat);
+                setMaterial(i, j, materials[getLevel(i,j)]);
             }
         }
 
