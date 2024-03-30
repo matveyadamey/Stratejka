@@ -10,6 +10,8 @@ TagManager:
   - 4
   - 5
   - coins
+  - Text
+  - Image
   layers:
   - Default
   - TransparentFX
