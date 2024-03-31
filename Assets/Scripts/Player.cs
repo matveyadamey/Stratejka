@@ -5,6 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float Speed;
+    public Dictionary<string, int> inventory;
+    public int coins = 0;
+
+    private void Start()
+    {
+        inventory = new Dictionary<string, int>();
+        inventory.Add("Block", 0);
+        inventory.Add("Turret", 0);
+    }
+
     private IEnumerator MoveObject(Vector3 target)
     {
         while (Vector3.Distance(transform.position, target) > 0.1f)

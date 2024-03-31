@@ -168,6 +168,52 @@ MonoBehaviour:
   coinPrefab: {fileID: 7042462938848942815, guid: 1c764e7581c6e9246a5260b69b940aa7, type: 3}
   cubeField: {fileID: 638475344}
   coinField: {fileID: 885158055}
+--- !u!1 &393345447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393345448}
+  - component: {fileID: 393345449}
+  m_Layer: 0
+  m_Name: ReallyPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &393345448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393345447}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &393345449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393345447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4541a4f2b76874092fbf69acff707b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0
+  coins: 0
 --- !u!1 &397204234
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  coins: 0
 --- !u!65 &1242891063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1031,6 +1078,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 1039365680009323828, guid: f9405bbf3d7bf8e4e9b39fe31897af2f, type: 3}
+  BanScreen: {fileID: 5556853969729681169, guid: 85855822772115e478c1ecf6bcb81850, type: 3}
+  Player: {fileID: 393345447}
   can: {fileID: 927342982}
 --- !u!114 &1649892945
 MonoBehaviour:
@@ -1139,3 +1188,4 @@ SceneRoots:
   - {fileID: 885158055}
   - {fileID: 1242891066}
   - {fileID: 927342983}
+  - {fileID: 393345448}
