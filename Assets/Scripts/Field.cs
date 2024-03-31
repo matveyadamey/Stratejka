@@ -28,7 +28,7 @@ public class Field : MonoBehaviour
     // устанавливает материал клетки по её координатам
     public void setMaterial(int x, int y, Material mat)
     {
-        getObject(x, y).material = mat;
+        getObject(x, y).setMaterial(mat);
     }
 
     // возращает количество монет в клетке по координатим
@@ -55,17 +55,11 @@ public class Field : MonoBehaviour
     {
         return getObject(x, y).elements;
     }
-
-    //возвращает есть ли элемент в клетке
-    public bool isElementInCell(int x, int y, string type)
-    {
-        return getDict(x,y).ContainsKey(type);
-    }
     
     //возвращает количество элементов в клетке
     public int countElements(int x, int y, string type)
     {
-        if (isElementInCell(x, y, type)) {
+        if (getDict(x, y).ContainsKey(type)) {
             getDict(x, y).TryGetValue(type, out int count);
             return count;
         }
@@ -91,40 +85,48 @@ public class Field : MonoBehaviour
         getObject(x, y).elements.Add(type,count--);
     }
 
-
-    // СОЗДАНИЕ ПОЛЯ и ЗАПОЛНЕНИЕ МОНЕТКАМИ
-    void Start()
+    // создание поля
+    void fieldSpawn()
     {
-        materials = confObj.GetComponent<Config>().materials;
-        // создание поля
-        for (int i = 0; i < SIZE; i++) 
+        for (int i = 0; i < SIZE; i++)
         {
             coordNet[i] = new Cell[SIZE];
             for (int j = 0; j < SIZE; j++)
             {
                 GameObject cube = Instantiate(cubePrefab, new Vector3(i, 0, j), Quaternion.identity, cubeField);
                 coordNet[i][j] = cube.GetComponent<Cell>();
-                setMaterial(i, j, materials[getLevel(i,j)]);
+                setMaterial(i, j, materials[getLevel(i, j)]);
             }
         }
+    }
 
-        // создание монеток
+    // создание монеток
+    void coinsSpawn()
+    {
         for (int i = 0; i < SIZE; i++)
         {
             for (int j = 0; j < SIZE; j++)
             {
-                if((i == 0 && j == 0) || (i == SIZE - 1 && j == 0) || 
+                if ((i == 0 && j == 0) || (i == SIZE - 1 && j == 0) ||
                     (i == 0 && j == SIZE - 1) || (i == SIZE - 1 && j == SIZE - 1) ||
                     getLevel(i, j) == 4)
                 {
-                    setCoinCount(i,j,0);
+                    setCoinCount(i, j, 0);
                     continue;
                 }
                 Instantiate(coinPrefab, new Vector3(i, 1f, j), Quaternion.Euler(new Vector3(-60, 30, 0)), coinField);
                 addElementToCell(i, j, "coin");
-                setCoinCount(i,j,getLevel(i, j));
+                setCoinCount(i, j, getLevel(i, j));
             }
         }
+    }
+
+    // СОЗДАНИЕ ПОЛЯ и ЗАПОЛНЕНИЕ МОНЕТКАМИ
+    void Start()
+    {
+        materials = confObj.GetComponent<Config>().materials;
+        fieldSpawn();
+        coinsSpawn();
     }
 
 }

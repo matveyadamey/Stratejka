@@ -123,4 +123,4 @@ MonoBehaviour:
   countCoin: 0
   x: 0
   y: 0
-  material: {fileID: 0}
+  player: {fileID: 0}

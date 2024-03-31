@@ -9,18 +9,18 @@ public class Cell : MonoBehaviour,IPointerClickHandler
     private const int SIZE = Config.SIZE;
 
     public int countCoin = 0;
-    public Dictionary<string,int> elements;
+    public Dictionary<string,int> elements=new Dictionary<string, int>();
     public int x;
     public int y;
-    public Material material;
+    [SerializeField] private GameObject player;
 
-    void Start()
+    // устанавливает материал клетки по её координатам
+    public void setMaterial(Material mat)
     {
-        GetComponent<Renderer>().material = material;
+        GetComponent<Renderer>().material = mat;
     }
     public void OnPointerClick(PointerEventData ev)
     {
-        Player player = new Player();
-        player.move(ev.position);
+        GameObject.Find("Player").GetComponent<Player>().move(new Vector3(transform.position.x,1,transform.position.z));
     }
 }
