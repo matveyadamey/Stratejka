@@ -13,6 +13,7 @@ public class Field : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Transform cubeField;
     [SerializeField] private Transform coinField;
+
     // возвращает номер контура
     public int getLevel(int x, int y)
     {
@@ -37,29 +38,30 @@ public class Field : MonoBehaviour
         return getObject(x, y).countCoin;
     }
     //удалить коин
-    public void deleteCoin(int x, int y,int cost)
+    public void deleteCoin(int x, int y, int cost)
     {
         int count = getCoinsCount(x, y);
-        if (count >=cost) setCoinCount(x, y, count-cost);
+        if (count >= cost) setCoinCount(x, y, count - cost);
     }
-    public void setCoinCount(int x,int y,int count)
+    public void setCoinCount(int x, int y, int count)
     {
-        getObject(x, y).countCoin=count;
+        getObject(x, y).countCoin = count;
     }
 
 
     //элементы на клетке
 
     //получить словарь с количеством объекта каждого типа
-    public Dictionary<string,int> getDict(int x,int y)
+    public Dictionary<string, int> getDict(int x, int y)
     {
         return getObject(x, y).elements;
     }
-    
+
     //возвращает количество элементов в клетке
     public int countElements(int x, int y, string type)
     {
-        if (getDict(x, y).ContainsKey(type)) {
+        if (getDict(x, y).ContainsKey(type))
+        {
             getDict(x, y).TryGetValue(type, out int count);
             return count;
         }
@@ -68,21 +70,22 @@ public class Field : MonoBehaviour
     }
 
     //добавить элемент на клетку
-    public void addElementToCell(int x,int y,string type)
+    public void addElementToCell(int x, int y, GameObject obj, Transform parent, int high)
     {
-        if(countElements(x,y,type)>0)
+        if (countElements(x, y, obj.tag) > 0)
         {
-            getDict(x, y)[type]++;
+            getDict(x, y)[obj.tag]++;
         }
-        else getDict(x, y).Add(type, 1);
-        
+        else getDict(x, y).Add(obj.tag, 1);
+        Instantiate(obj, new Vector3(x, high, y), Quaternion.identity, parent);
     }
 
     //удалить элемент с клетки
     public void deleteElementFromCell(int x, int y, string type)
     {
         int count = countElements(x, y, type);
-        getObject(x, y).elements.Add(type,count--);
+        getObject(x, y).elements.Add(type, count--);
+        Destroy(GameObject.FindGameObjectWithTag(type));
     }
 
     // создание поля
@@ -114,8 +117,7 @@ public class Field : MonoBehaviour
                     setCoinCount(i, j, 0);
                     continue;
                 }
-                Instantiate(coinPrefab, new Vector3(i, 1f, j), Quaternion.Euler(new Vector3(-60, 30, 0)), coinField);
-                addElementToCell(i, j, "coin");
+                addElementToCell(i, j, coinPrefab, coinField, 1);
                 setCoinCount(i, j, getLevel(i, j));
             }
         }
