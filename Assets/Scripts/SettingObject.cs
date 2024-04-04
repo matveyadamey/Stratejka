@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SettingObject : MonoBehaviour
 {
-    List<Object> inventory;
-    Field field;
+    private List<Object> _inventory;
+    private Field _field;
     private void Start()
     {
-        inventory = Storage.inventory;
-        field = new Field();
+        _inventory = Storage.Inventory;
+        _field = new Field();
     }
     void Update()
     {
-        if (inventory.Count>0)
+        if (_inventory.Count>0)
         {
-            var obj = inventory[0];
-            field.addElementToCell(obj.x, obj.y,obj.objPrefab,null,1);
-            inventory.Clear();
+            var obj = _inventory[0];
+            _field.AddElementToCell(obj.x, obj.y,obj.ObjPrefab,null,1);
+            _inventory.Clear();
         }
     }
 }

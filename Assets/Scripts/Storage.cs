@@ -7,10 +7,10 @@ public class Storage : MonoBehaviour
 {
     //хранилище флагов и массива доступных объектов
 
-    public static bool isMove; //двигаем объект или нет
-    public static int[][] isСlicked; //нажатие на клетку [x][y]
-    public Object[] objects;
-    public static List<Object> inventory; //объекты для спавна
+    public static bool IsMove; //двигаем объект или нет
+    public static int[][] IsСlicked; //нажатие на клетку [x][y]
+    public Object[] Objects;
+    public static List<Object> Inventory; //объекты для спавна
     
 
 }

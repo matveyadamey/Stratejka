@@ -4,65 +4,47 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    [SerializeField] private GameObject confObj;
-    private const int SIZE = Config.SIZE;// размер поля
-    private Material[] materials;
-    Cell[][] coordNet = new Cell[SIZE][];
+    [SerializeField] private GameObject _confObj;
+    protected const int Size = Config.SIZE;// размер поля
+    private Material[] _materials;
+    private Cell[][] _coordNet = new Cell[Size][];
 
-    [SerializeField] private GameObject cubePrefab;
-    [SerializeField] private GameObject coinPrefab;
-    [SerializeField] private Transform cubeField;
-    [SerializeField] private Transform coinField;
+    [SerializeField] private GameObject _cubePrefab;
+    [SerializeField] private Transform _cubeField;
 
     // возвращает номер контура
-    public int getLevel(int x, int y)
+    public int GetLayer(int x, int y)
     {
-        return Mathf.Min(Mathf.Min(x, SIZE - x - 1), Mathf.Min(y, SIZE - y - 1));
+        return Mathf.Min(Mathf.Min(x, Size - x - 1), Mathf.Min(y, Size - y - 1));
     }
 
     // возвращает класс игровой клетки по координатам
-    public Cell getObject(int x, int y)
+    public Cell GetObject(int x, int y)
     {
-        return coordNet[x][y];
+        return _coordNet[x][y];
     }
 
     // устанавливает материал клетки по её координатам
-    public void setMaterial(int x, int y, Material mat)
+    public void SetMaterial(int x, int y, Material mat)
     {
-        getObject(x, y).setMaterial(mat);
-    }
-
-    // возращает количество монет в клетке по координатим
-    public int getCoinsCount(int x, int y)
-    {
-        return getObject(x, y).countCoin;
-    }
-    //удалить коин
-    public void deleteCoin(int x, int y, int cost)
-    {
-        int count = getCoinsCount(x, y);
-        if (count >= cost) setCoinCount(x, y, count - cost);
-    }
-    public void setCoinCount(int x, int y, int count)
-    {
-        getObject(x, y).countCoin = count;
+        GetObject(x, y).SetMaterial(mat);
     }
 
 
     //элементы на клетке
 
     //получить словарь с количеством объекта каждого типа
-    public Dictionary<string, int> getDict(int x, int y)
+    public Dictionary<string, int> GetDict(int x, int y)
     {
-        return getObject(x, y).elements;
+        return GetObject(x, y).Elements;
     }
 
     //возвращает количество элементов в клетке
-    public int countElements(int x, int y, string type)
+    public int CountElements(int x, int y, string type)
     {
-        if (getDict(x, y).ContainsKey(type))
+        if (GetDict(x, y).ContainsKey(type))
         {
-            getDict(x, y).TryGetValue(type, out int count);
+            GetDict(x, y).TryGetValue(type, out int count);
             return count;
         }
         return -1;
@@ -70,65 +52,46 @@ public class Field : MonoBehaviour
     }
 
     //добавить элемент на клетку
-    public void addElementToCell(int x, int y, GameObject obj, Transform parent, int high)
+    public void AddElementToCell(int x, int y, GameObject obj, Transform parent, int high)
     {
-        if (countElements(x, y, obj.tag) > 0)
+        if (CountElements(x, y, obj.tag) > 0)
         {
-            getDict(x, y)[obj.tag]++;
+            GetDict(x, y)[obj.tag]++;
         }
-        else getDict(x, y).Add(obj.tag, 1);
+        else GetDict(x, y).Add(obj.tag, 1);
         Instantiate(obj, new Vector3(x, high, y), Quaternion.identity, parent);
     }
 
     //удалить элемент с клетки
-    public void deleteElementFromCell(int x, int y, string type)
+    public void DeleteElementFromCell(int x, int y, string type)
     {
-        int count = countElements(x, y, type);
-        getObject(x, y).elements.Add(type, count--);
+        int count = CountElements(x, y, type);
+        GetObject(x, y).Elements.Add(type, count--);
         Destroy(GameObject.FindGameObjectWithTag(type));
     }
 
     // создание поля
-    void fieldSpawn()
+    private void _fieldSpawn()
     {
-        for (int i = 0; i < SIZE; i++)
+        for (int i = 0; i < Size; i++)
         {
-            coordNet[i] = new Cell[SIZE];
-            for (int j = 0; j < SIZE; j++)
+            _coordNet[i] = new Cell[Size];
+            for (int j = 0; j < Size; j++)
             {
-                GameObject cube = Instantiate(cubePrefab, new Vector3(i, 0, j), Quaternion.identity, cubeField);
-                coordNet[i][j] = cube.GetComponent<Cell>();
-                setMaterial(i, j, materials[getLevel(i, j)]);
+                GameObject cube = Instantiate(_cubePrefab, new Vector3(i, 0, j), Quaternion.identity, _cubeField);
+                _coordNet[i][j] = cube.GetComponent<Cell>();
+                SetMaterial(i, j, _materials[GetLayer(i, j)]);
             }
         }
     }
 
-    // создание монеток
-    void coinsSpawn()
-    {
-        for (int i = 0; i < SIZE; i++)
-        {
-            for (int j = 0; j < SIZE; j++)
-            {
-                if ((i == 0 && j == 0) || (i == SIZE - 1 && j == 0) ||
-                    (i == 0 && j == SIZE - 1) || (i == SIZE - 1 && j == SIZE - 1) ||
-                    getLevel(i, j) == 4)
-                {
-                    setCoinCount(i, j, 0);
-                    continue;
-                }
-                addElementToCell(i, j, coinPrefab, coinField, 1);
-                setCoinCount(i, j, getLevel(i, j));
-            }
-        }
-    }
+
 
     // СОЗДАНИЕ ПОЛЯ и ЗАПОЛНЕНИЕ МОНЕТКАМИ
-    void Start()
+    void Awake()
     {
-        materials = confObj.GetComponent<Config>().materials;
-        fieldSpawn();
-        coinsSpawn();
+        _materials = _confObj.GetComponent<Config>().Materials;
+        _fieldSpawn();
     }
 
 }

@@ -7,11 +7,11 @@ using TMPro;
 public class Object : MonoBehaviour
 {
     //структра объекта, который есть в магазине
-    public Image image;
-    public TMP_Text name;
-    public TMP_Text description; //описание
-    public int cost;
-    public GameObject objPrefab;
+    public Image Image;
+    public TMP_Text Name;
+    public TMP_Text Description; //описание
+    public int Cost;
+    public GameObject ObjPrefab;
     public int x; //при добавлении на поле, обязательно указать
     public int y;
 }

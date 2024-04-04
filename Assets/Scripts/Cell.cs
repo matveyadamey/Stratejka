@@ -8,14 +8,14 @@ public class Cell : MonoBehaviour,IPointerClickHandler
 {
     private const int SIZE = Config.SIZE;
 
-    public int countCoin = 0;
-    public Dictionary<string,int> elements=new Dictionary<string, int>();
+    public int CountCoin = 0;
+    public Dictionary<string,int> Elements=new Dictionary<string, int>();
     public int x;
     public int y;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject _player;
 
     // устанавливает материал клетки по её координатам
-    public void setMaterial(Material mat)
+    public void SetMaterial(Material mat)
     {
         GetComponent<Renderer>().material = mat;
     }
