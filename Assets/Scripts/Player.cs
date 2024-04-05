@@ -20,10 +20,10 @@ public class Player : MonoBehaviour
     };
 
     // скорость передвижения фишки 
-    [SerializeField] private float _speed;
+    private float _speed = 10;
 
 
-    private IEnumerator MoveObject(Vector3 target)
+/*    private IEnumerator MoveObject(Vector3 target)
     {
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, target, speed);
             yield return null;
         }
-    }
+    }*/
     public void Update()
     {
         if (Storage.IsMove)
@@ -46,7 +46,8 @@ public class Player : MonoBehaviour
                 // если клетка выбрана
                 if (Storage.IsСlicked[newX][newY])
                 {
-                    StartCoroutine(MoveObject(new Vector3(newX, 1, newY)));
+                    //StartCoroutine(MoveObject(new Vector3(newX, 1, newY)));
+                    transform.position = new Vector3(newX, 1, newY);
                     _x = newX;
                     _y = newY;
                 }
