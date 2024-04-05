@@ -16,7 +16,7 @@ public class Cell : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private GameObject _player;
 
     // устанавливает материал клетки по её координатам
-    public void setMaterial(Material mat)
+    public void SetMaterial(Material mat)
     {
         GetComponent<Renderer>().material = mat;
     }
@@ -25,11 +25,11 @@ public class Cell : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData ev)
     {
         Storage.IsСlicked[(int)transform.position.x][(int)transform.position.z] = true;
-        Debug.Log(1);
+        Debug.Log(Storage.IsСlicked[(int)transform.position.x][(int)transform.position.z]);
     }
     public void OnPointerUp(PointerEventData ev)
     {
         Storage.IsСlicked[(int)transform.position.x][(int)transform.position.z] = false;
-        Debug.Log(0);
+        Debug.Log(Storage.IsСlicked[(int)transform.position.x][(int)transform.position.z]);
     }
 }
