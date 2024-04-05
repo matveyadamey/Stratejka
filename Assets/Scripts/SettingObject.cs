@@ -7,7 +7,7 @@ public class SettingObject : MonoBehaviour
     Field field;
     private void Start()
     {
-        inventory = Storage.inventory;
+        inventory = Storage.Inventory;
         field = new Field();
     }
     void Update()

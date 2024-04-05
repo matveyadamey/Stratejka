@@ -35,7 +35,7 @@ public class Field : MonoBehaviour
     // возращает количество монет в клетке по координатим
     public int getCoinsCount(int x, int y)
     {
-        return getObject(x, y).countCoin;
+        return getObject(x, y).CountCoin;
     }
     //удалить коин
     public void deleteCoin(int x, int y, int cost)
@@ -45,7 +45,7 @@ public class Field : MonoBehaviour
     }
     public void setCoinCount(int x, int y, int count)
     {
-        getObject(x, y).countCoin = count;
+        getObject(x, y).CountCoin = count;
     }
 
 
@@ -54,7 +54,7 @@ public class Field : MonoBehaviour
     //получить словарь с количеством объекта каждого типа
     public Dictionary<string, int> getDict(int x, int y)
     {
-        return getObject(x, y).elements;
+        return getObject(x, y).Elements;
     }
 
     //возвращает количество элементов в клетке
@@ -84,7 +84,7 @@ public class Field : MonoBehaviour
     public void deleteElementFromCell(int x, int y, string type)
     {
         int count = countElements(x, y, type);
-        getObject(x, y).elements.Add(type, count--);
+        getObject(x, y).Elements.Add(type, count--);
         Destroy(GameObject.FindGameObjectWithTag(type));
     }
 

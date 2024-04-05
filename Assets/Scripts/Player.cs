@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    protected const int SIZE = Config.SIZE;
+    protected const int Size = Config.SIZE;
 
     // координаты фишки
     private int _x = 0;
@@ -20,32 +20,31 @@ public class Player : MonoBehaviour
     };
 
     // скорость передвижения фишки 
-    [SerializeField] private float Speed;
+    [SerializeField] private float _speed;
 
 
     private IEnumerator MoveObject(Vector3 target)
     {
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
-            float speed = Speed * Time.deltaTime;
+            float speed = _speed * Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, target, speed);
             yield return null;
         }
     }
     public void Update()
     {
-        Storage storage = GameObject.Find("Storage").GetComponent<Storage>();
-        if (storage.IsMove)
+        if (Storage.IsMove)
         {
             foreach (int[] add in _moveAdd)
             {
                 // находим координаты клеток, в которые можем пойти
                 int newX = _x + add[0];
                 int newY = _y + add[1];
-                if (Mathf.Min(newX, newY) < 0 || SIZE <= Mathf.Max(newX, newY)) continue;
+                if (Mathf.Min(newX, newY) < 0 || Size <= Mathf.Max(newX, newY)) continue;
 
-                // если клетка выброна
-                if (storage.IsСlicked[newX, newY])
+                // если клетка выбрана
+                if (Storage.IsСlicked[newX][newY])
                 {
                     StartCoroutine(MoveObject(new Vector3(newX, 1, newY)));
                     _x = newX;
