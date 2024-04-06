@@ -6,17 +6,14 @@ using UnityEngine.EventSystems;
 
 public class Cell : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private const int Size = Config.SIZE;
-
     public int CountCoin = 0;
-    public Dictionary<string, int> Elements = new Dictionary<string, int>();
+    public Dictionary<string, int> ObjectsOnCell = new Dictionary<string, int>();
 
     public int x;
     public int y;
     [SerializeField] private GameObject _player;
 
-    // устанавливает материал клетки по её координатам
-    public void SetMaterial(Material mat)
+    public void SetCellMaterial(Material mat)
     {
         GetComponent<Renderer>().material = mat;
     }

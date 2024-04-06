@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class Storage : MonoBehaviour
 {
-    protected const int Size = Config.SIZE;// размер поля
-    //хранилище флагов и массива доступных объектов
+    protected const int Size = Config.SIZE;
 
-    public static bool IsMove = true; //двигаем объект или нет
-    public static bool[][] IsСlicked=new bool[Size][];  //нажатие на клетку [x][y]
-    public static Object[] Objects;
-    public static List<Object> Inventory; //объекты для спавна
+    public static bool IsMove = true; 
+    public static bool[][] IsСlicked=new bool[Size][];
+    public static List<Object> Inventory; 
 
     
 private void Start()
