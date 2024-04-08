@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4282368064078733681}
   - component: {fileID: 3683610610768254459}
   - component: {fileID: 3615910401102961671}
-  - component: {fileID: -1471079022957671144}
+  - component: {fileID: 8592854365696527380}
   m_Layer: 0
   m_Name: CubeField
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1471079022957671144
+--- !u!114 &8592854365696527380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab42068e8beeee94b8ff264180b83b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countCoin: 0
+  CountCoin: 0
   x: 0
   y: 0
-  player: {fileID: 0}
+  _player: {fileID: 0}

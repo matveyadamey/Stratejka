@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
 
 
-    private IEnumerator MoveObject(Vector3 target)
+    public IEnumerator MoveObject(Vector3 target)
     {
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
