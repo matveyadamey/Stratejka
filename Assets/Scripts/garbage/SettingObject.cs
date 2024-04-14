@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class SettingObject : MonoBehaviour
@@ -20,3 +20,4 @@ public class SettingObject : MonoBehaviour
         }
     }
 }
+*/

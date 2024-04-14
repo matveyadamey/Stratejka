@@ -25,12 +25,21 @@ public class Raycaster : MonoBehaviour
 
                 if (clickedObject.tag == "Chip")
                 {
+                    if(_chosenChip != null)
+                    {
+                        Highlighter.HighlightOff(_chosenChip);
+                    }
                     _chosenChip = clickedObject;
+                    Highlighter.HighlightOn(clickedObject);
                 }
 
                 if (_chosenChip!=null && clickedObject.tag=="Cell")
                 {
+
+                    Highlighter.HighlightOn(clickedObject);
                     _movement.move(clickedObject.transform.position, _chosenChip);
+                    Highlighter.HighlightOff(clickedObject);
+                    Highlighter.HighlightOff(_chosenChip);
                     _chosenChip = null;
                 }
             }
