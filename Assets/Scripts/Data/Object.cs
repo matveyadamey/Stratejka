@@ -1,4 +1,4 @@
-﻿abstract class Object
+﻿public abstract class Object
 {
     public abstract string Type { get; }
     public abstract int Cost { get; }
