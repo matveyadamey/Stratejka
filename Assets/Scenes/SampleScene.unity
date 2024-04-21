@@ -177,6 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 63917450}
+  - component: {fileID: 63917451}
   m_Layer: 0
   m_Name: Field
   m_TagString: Untagged
@@ -199,6 +200,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &63917451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63917448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac04503ed26892c4fbef00d0958d9ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _materials:
+  - {fileID: 2100000, guid: 04da52fcff48d2748a7e0422c07871a1, type: 2}
+  - {fileID: 2100000, guid: 281d0e41beee1434ab0e2ab609b954df, type: 2}
+  - {fileID: 2100000, guid: 4cda8241ce2bcc54e96145e35394847d, type: 2}
+  - {fileID: 2100000, guid: f73483774b125be41842502d672645e5, type: 2}
+  - {fileID: 2100000, guid: f6cf7ba46263f7b4e952bd909a166ccf, type: 2}
+  _cubePrefab: {fileID: 4434183213483943795, guid: 31ead5c418af84142a5795774b4a67cc, type: 3}
+  _cubeField: {fileID: 63917450}
 --- !u!1 &397204234
 GameObject:
   m_ObjectHideFlags: 0
