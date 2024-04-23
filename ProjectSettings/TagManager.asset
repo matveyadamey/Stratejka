@@ -12,8 +12,6 @@ TagManager:
   - coins
   - Text
   - Image
-  - Chip
-  - Cell
   layers:
   - Default
   - TransparentFX
