@@ -1,41 +1,39 @@
 ﻿using System;
 
-public class MapObject
+public static class MapObject
 {
-    private Point _fieldSize;
-    private int _radiusOfDefeat;
-    private static Object[,] _map;
+    private static int _size = StartGame.Size;
+    private static int _radiusOfDefeat;
+    public static Object[,] _map;
 
-    public Object this[int i, int j] 
+    public static Object GetObject(Point p)
     {
-        get { return _map[i, j]; }
-        set
+        return _map[p.x, p.y];
+    }
+
+    public static void SetObject(Object value, Point p)
+    {
+        if (!CheckCoord(new Point(p.x, p.y)) || _map[p.x, p.y] != null)
         {
-            if (!CheckCoord(new Point(i, j)) || _map[i, j] != null)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-            _map[i, j] = value;
+            throw new ArgumentOutOfRangeException();
         }
+        _map[p.x, p.y] = value;
     }
-
-    public MapObject(Point fieldSize, int radiusOfDefeat)
+    public static void MakeMapObject()
     {
-        _fieldSize = fieldSize;
-        _radiusOfDefeat = radiusOfDefeat;
-        _map = new Object[_fieldSize.x, _fieldSize.y];
+        _map = new Object[_size, _size];
         _map[0, 0] = new Chip(0);
-        _map[_fieldSize.x - 1, _fieldSize.y - 1] = new Chip(0);
-        _map[_fieldSize.x - 1, 0] = new Chip(1);
-        _map[0, _fieldSize.y - 1] = new Chip(1);
+        _map[_size - 1, _size - 1] = new Chip(0);
+        _map[_size - 1, 0] = new Chip(1);
+        _map[0, _size - 1] = new Chip(1);
     }
 
-    private bool CheckCoord(Point p)
+    private static bool CheckCoord(Point p)
     {
-        return 0 <= p.x && p.x < _fieldSize.x && 0 <= p.y && p.y < _fieldSize.y;
+        return 0 <= p.x && p.x < _size && 0 <= p.y && p.y < _size;
     }
 
-    public bool IsDealtDamage(Point p, int ind)
+    public static bool IsDealtDamage(Point p, int ind)
     {
         if (!CheckCoord(p))
         {

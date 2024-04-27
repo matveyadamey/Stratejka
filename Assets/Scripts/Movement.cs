@@ -13,27 +13,35 @@ public class Movement : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, target, _speed * Time.deltaTime);
             yield return null;
         }
+        Highlighter.HighlightOff(gameObject);
     }
     private void move(Point target)
     {
         Vector3 _target = new Vector3(target.x, 1, target.y);
-        Player player = Data.Players[playerNumber];
+        Player player = PlayersContainer.Players[playerNumber];
         if (player.CanMoveChip(chipNumber,target))
         {
-            print("move");
             StartCoroutine(this.MoveObject(_target));
             player.MoveChip(chipNumber, target);
             CurrentPlayer.NextPlayer();
+        }
+        else
+        {
+            Highlighter.HighlightOff(gameObject);
         }
         
     }
 
     void OnMouseDown()
     {
-        print("click");
-        Highlighter.HighlightOn(gameObject);
-        Point lastClick = raycaster.LastClicks[playerNumber];
-        move(lastClick);
-        Highlighter.HighlightOff(gameObject);
+        if (playerNumber == CurrentPlayer.CurrentPlayerNumber)
+        {
+            GameObject clickedObject = raycaster.LastClicks[playerNumber];
+            Highlighter.HighlightOn(gameObject);
+            Vector3 clickPosition = clickedObject.transform.position;
+            Point lastClick = new Point((int)clickPosition.x, (int)clickPosition.z);
+            move(lastClick);
+            Highlighter.HighlightOff(clickedObject);
+        }
     }
 }

@@ -14,6 +14,7 @@ TagManager:
   - Image
   - Chip
   - Cell
+  - cellsParent
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,7 @@
-public class Resources
+public class Resource
 {
     public int coinCount;
-    public Resources(int inputCount)
+    public Resource(int inputCount)
     {
         coinCount = inputCount;
     }

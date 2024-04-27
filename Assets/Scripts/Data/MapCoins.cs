@@ -1,23 +1,21 @@
 using System;
-public class MapCoins
+public static class MapCoins
 {
-    private int _size;
+    private static int _size = StartGame.Size;
     public static Coin[,] _coinsNet;
 
-    public Coin this[int i, int j]
-    {
-        get { return _coinsNet[i, j]; }
-    }
-
-
-    int GetLayerCount(Point p)
+    private static int GetLayerCount(Point p)
     {
         return Math.Min(Math.Min(p.x, p.y), Math.Min(_size - p.x - 1, _size - p.y - 1)) + 1;
     }
 
-    public MapCoins(Point fieldSize)
+    public static int GetCoinValue(Point p)
     {
-        _size = fieldSize.x;
+        return _coinsNet[p.x,p.y].coinCount;
+    }
+
+    public static void MakeMapCoins()
+    {
         _coinsNet =new Coin[_size, _size];
         for (int i = 0; i < _size; i++)
         {
@@ -28,7 +26,7 @@ public class MapCoins
         }
     }
 
-    private void DeleteCoin(Point Cord)
+    public static void DeleteCoin(Point Cord)
     {
         _coinsNet[Cord.x, Cord.y] = new Coin(0);
     }
