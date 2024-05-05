@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Raycaster : MonoBehaviour
 {
-    public GameObject[] LastClicks=new GameObject[2];
+    public static GameObject[] LastClicks=new GameObject[2];
 
     private void FixedUpdate()
     {
