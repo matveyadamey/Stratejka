@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour {
     {
         if (playerNumber == CurrentPlayer.CurrentPlayerNumber)
         {
-            GameObject clickedObject = raycaster.LastClicks[playerNumber];
+            GameObject clickedObject = Raycaster.LastClicks[playerNumber];
             Highlighter.HighlightOn(gameObject);
             Vector3 clickPosition = clickedObject.transform.position;
             Point lastClick = new Point((int)clickPosition.x, (int)clickPosition.z);
