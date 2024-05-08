@@ -19,12 +19,12 @@ public class UIManager : MonoBehaviour
     }
     public void BuyTurretButton()
     {
-        BuyButton(0, _turretPrefab);
+        BuyButton(3, _turretPrefab);
     } 
     
     public void BuyBlockButton()
     {
-        BuyButton(0, _blockPrefab);
+        BuyButton(3, _blockPrefab);
     } 
 
 }
