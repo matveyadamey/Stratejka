@@ -16,6 +16,11 @@ public class Raycaster : MonoBehaviour
                 GameObject click = hit.collider.gameObject;
                 if (click.tag == "Cell")
                 {
+                    if (LastClicks[CurrentPlayer.CurrentPlayerNumber])
+                    {
+                        Highlighter.HighlightOff(LastClicks[CurrentPlayer.CurrentPlayerNumber]);
+                    }
+
                     Highlighter.HighlightOn(click);
                     LastClicks[CurrentPlayer.CurrentPlayerNumber] = click;
                 }

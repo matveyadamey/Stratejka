@@ -1,3 +1,4 @@
+using UnityEngine;
 public class Player
 {
     public int CountCoins = 0;
@@ -27,6 +28,7 @@ public class Player
         _coordChip[ind].x = p.x;
         _coordChip[ind].y = p.y;
         CountCoins += MapCoins.GetCoinValue(p);
+        Debug.Log(CountCoins);
         MapCoins.DeleteCoin(p);
     }
 
