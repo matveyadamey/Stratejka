@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
         if (pl.CountCoins >= cost)
         {
             pl.CountCoins -= cost;
-            _SpawnObject.SpawnObject(prefab, new Vector3(Raycaster.LastClicks[number].transform.position.x, 1, Raycaster.LastClicks[number].transform.position.z));
+            //_SpawnObject.SpawnObject(prefab, new Vector3(Raycaster.LastClicks[number].transform.position.x, 1, Raycaster.LastClicks[number].transform.position.z));
         }
     }
     public void BuyTurretButton()

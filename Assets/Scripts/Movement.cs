@@ -13,9 +13,11 @@ public class Movement : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, target, _speed * Time.deltaTime);
             yield return null;
         }
+        CurrentPlayer.OperatingMode = "expectation";
+        CurrentPlayer.MovementChip = null;
         Highlighter.HighlightOff(gameObject);
     }
-    private void move(Point target)
+    public void Move(Point target)
     {
         Vector3 _target = new Vector3(target.x, 1, target.y);
         Player player = PlayersContainer.Players[playerNumber];
@@ -25,23 +27,39 @@ public class Movement : MonoBehaviour {
             player.MoveChip(chipNumber, target);
             CurrentPlayer.NextPlayer();
         }
-        else
-        {
-            Highlighter.HighlightOff(gameObject);
-        }
-        
     }
 
     void OnMouseDown()
     {
-        if (playerNumber == CurrentPlayer.CurrentPlayerNumber)
+        if (CurrentPlayer.CurrentPlayerNumber == playerNumber)
         {
+            if(CurrentPlayer.OperatingMode == "movement_chip" && CurrentPlayer.MovementChip == this)
+            {
+                CurrentPlayer.OperatingMode = "expectation";
+                CurrentPlayer.MovementChip = null;
+                Highlighter.HighlightOff(gameObject);
+            }
+            else
+            {
+                if(CurrentPlayer.MovementChip != null)
+                {
+                    GameObject prevObject = CurrentPlayer.MovementChip.gameObject;
+                    Highlighter.HighlightOff(prevObject);
+                }
+
+                CurrentPlayer.OperatingMode = "movement_chip";
+                CurrentPlayer.MovementChip = this;
+                Highlighter.HighlightOn(gameObject);
+            }
+
+            /*
             GameObject clickedObject = Raycaster.LastClicks[playerNumber];
             Highlighter.HighlightOn(gameObject);
             Vector3 clickPosition = clickedObject.transform.position;
             Point lastClick = new Point((int)clickPosition.x, (int)clickPosition.z);
             move(lastClick);
             Highlighter.HighlightOff(clickedObject);
+            */
         }
     }
 }
