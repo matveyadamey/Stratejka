@@ -2,7 +2,7 @@
 class Block : Object
 {
     public override string Type { get; } = "block";
-    public override int Cost { get; } = 5;
+    public override int Cost { get; } = 3;
     public override int PlayerNumber { get; }
 
     public Block(int playerNumber)

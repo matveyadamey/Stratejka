@@ -24,7 +24,6 @@ public class UIManager : MonoBehaviour
         Player player = PlayersContainer.Players[playerNumber];
         if (player.CountCoins >= type.Cost)
         {
-            player.CountCoins -= type.Cost;
             CurrentPlayer.OperatingMode = "buy_object";
             CurrentPlayer.TypePurchasedObject = type;
             CurrentPlayer.PurchasedObject = prefab;
