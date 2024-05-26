@@ -17,6 +17,5 @@ public static class CurrentPlayer
     public static void NextPlayer()
     {
         CurrentPlayerNumber = (CurrentPlayerNumber + 1) % playersCount;
-        Debug.Log("сейчас ходит игрок " + CurrentPlayerNumber);
     }
 }

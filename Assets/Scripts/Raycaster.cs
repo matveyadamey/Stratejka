@@ -28,6 +28,8 @@ public class Raycaster : MonoBehaviour
                     {
                         Vector3 place = new Vector3(clickPosition.x, 1, clickPosition.z);
                         _SpawnObject.SpawnObject(CurrentPlayer.PurchasedObject, place);
+                        CurrentPlayer.OperatingMode = "expectation";
+                        CurrentPlayer.PurchasedObject = null;
                         CurrentPlayer.NextPlayer();
                     }
                 }

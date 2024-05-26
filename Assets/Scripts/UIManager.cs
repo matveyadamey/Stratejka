@@ -19,9 +19,10 @@ public class UIManager : MonoBehaviour
         Money2.text = player2.CountCoins.ToString();
     }
 
-    public void BuyButton(int cost, GameObject prefab)
+    public void BuyButton(int cost, GameObject prefab, int playerNumber)
     {
-        int playerNumber = CurrentPlayer.CurrentPlayerNumber;
+        if (playerNumber != CurrentPlayer.CurrentPlayerNumber) return;
+
         Player player = PlayersContainer.Players[playerNumber];
         if (player.CountCoins >= cost)
         {
@@ -30,14 +31,14 @@ public class UIManager : MonoBehaviour
             CurrentPlayer.PurchasedObject = prefab;
         }
     }
-    public void BuyTurretButton()
+    public void BuyTurretButton(int playerNumber)
     {
-        BuyButton(turretCost, _turretPrefab);
+        BuyButton(turretCost, _turretPrefab, playerNumber);
     } 
     
-    public void BuyBlockButton()
+    public void BuyBlockButton(int playerNumber)
     {
-        BuyButton(blockCost, _blockPrefab);
+        BuyButton(blockCost, _blockPrefab, playerNumber);
     } 
 
 }
