@@ -10,7 +10,7 @@ public static class CurrentPlayer
     // "movement_chip"
     public static Movement MovementChip { get; set; } = null;
     // "buy_object"
-    public static GameObject BuyObject { get; set; } = null; // ????????????????
+    public static GameObject PurchasedObject { get; set; } = null;
     //==========================================================================
 
 

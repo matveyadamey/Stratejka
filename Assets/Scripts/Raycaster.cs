@@ -16,16 +16,17 @@ public class Raycaster : MonoBehaviour
                 GameObject click = hit.collider.gameObject;
                 if (click.tag == "Cell")
                 {
+                    Vector3 clickPosition = click.transform.position;
                     if (CurrentPlayer.OperatingMode == "movement_chip")
                     {
-                        Vector3 clickPosition = click.transform.position;
                         Point lastClick = new Point((int)clickPosition.x, (int)clickPosition.z);
                         CurrentPlayer.MovementChip.Move(lastClick);
                     }
 
                     if (CurrentPlayer.OperatingMode == "buy_object")
                     {
-                        // ?????????????????????????????????????????
+                        Vector3 place = new Vector3(clickPosition.x, 1, clickPosition.z);
+                        UIManager.SpawnObject(CurrentPlayer.PurchasedObject, place);
                     }
 
                     /*
