@@ -7,11 +7,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private int blockCost;
     [SerializeField] private int turretCost;
 
-    public static void SpawnObject(GameObject prefab, Vector3 place)
-    {
-        _SpawnObject.SpawnObject(prefab,place);
-        CurrentPlayer.PurchasedObject= null;
-    }
     public void BuyButton(int cost, GameObject prefab)
     {
         int playerNumber = CurrentPlayer.CurrentPlayerNumber;
@@ -19,19 +14,8 @@ public class UIManager : MonoBehaviour
         if (player.CountCoins >= cost)
         {
             player.CountCoins -= cost;
-            if (CurrentPlayer.CurrentPlayerNumber == playerNumber)
-            {
-                if (CurrentPlayer.OperatingMode == "buy_object" && CurrentPlayer.PurchasedObject == prefab)
-                {
-                    CurrentPlayer.OperatingMode = "expectation";
-                    CurrentPlayer.PurchasedObject = null;
-                }
-                else
-                {
-                    CurrentPlayer.OperatingMode = "buy_object";
-                    CurrentPlayer.PurchasedObject = prefab;
-                }
-            }
+            CurrentPlayer.OperatingMode = "buy_object";
+            CurrentPlayer.PurchasedObject = prefab;
         }
     }
     public void BuyTurretButton()

@@ -14,7 +14,8 @@ public class Raycaster : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 GameObject click = hit.collider.gameObject;
-                if (click.tag == "Cell")
+                //Debug.Log(click.tag);
+                if (click.tag == "Cell" || click.tag == "coin")
                 {
                     Vector3 clickPosition = click.transform.position;
                     if (CurrentPlayer.OperatingMode == "movement_chip")
@@ -26,17 +27,9 @@ public class Raycaster : MonoBehaviour
                     if (CurrentPlayer.OperatingMode == "buy_object")
                     {
                         Vector3 place = new Vector3(clickPosition.x, 1, clickPosition.z);
-                        UIManager.SpawnObject(CurrentPlayer.PurchasedObject, place);
+                        _SpawnObject.SpawnObject(CurrentPlayer.PurchasedObject, place);
+                        CurrentPlayer.NextPlayer();
                     }
-
-                    /*
-                    if (LastClicks[CurrentPlayer.CurrentPlayerNumber])
-                    {
-                        Highlighter.HighlightOff(LastClicks[CurrentPlayer.CurrentPlayerNumber]);
-                    }
-                    Highlighter.HighlightOn(click);
-                    LastClicks[CurrentPlayer.CurrentPlayerNumber] = click;
-                    */
                 }
             }
         }
