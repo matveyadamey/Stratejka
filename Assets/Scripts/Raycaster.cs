@@ -14,7 +14,7 @@ public class Raycaster : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 GameObject click = hit.collider.gameObject;
-                //Debug.Log(click.tag);
+
                 if (click.tag == "Cell" || click.tag == "coin")
                 {
                     Vector3 clickPosition = click.transform.position;
@@ -27,8 +27,9 @@ public class Raycaster : MonoBehaviour
                     if (CurrentPlayer.OperatingMode == "buy_object")
                     {
                         Vector3 place = new Vector3(clickPosition.x, 1, clickPosition.z);
-                        _SpawnObject.SpawnObject(CurrentPlayer.PurchasedObject, place);
+                        _SpawnObject.SpawnObject(CurrentPlayer.TypePurchasedObject, CurrentPlayer.PurchasedObject, place);
                         CurrentPlayer.OperatingMode = "expectation";
+                        CurrentPlayer.TypePurchasedObject = null;
                         CurrentPlayer.PurchasedObject = null;
                         CurrentPlayer.NextPlayer();
                     }

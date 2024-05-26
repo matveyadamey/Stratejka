@@ -6,8 +6,6 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _blockPrefab;
     [SerializeField] private GameObject _turretPrefab;
-    [SerializeField] private int blockCost;
-    [SerializeField] private int turretCost;
     [SerializeField] private Text Money1;
     [SerializeField] private Text Money2;
 
@@ -19,26 +17,29 @@ public class UIManager : MonoBehaviour
         Money2.text = player2.CountCoins.ToString();
     }
 
-    public void BuyButton(int cost, GameObject prefab, int playerNumber)
+    public void BuyButton(Object type, GameObject prefab, int playerNumber)
     {
         if (playerNumber != CurrentPlayer.CurrentPlayerNumber) return;
 
         Player player = PlayersContainer.Players[playerNumber];
-        if (player.CountCoins >= cost)
+        if (player.CountCoins >= type.Cost)
         {
-            player.CountCoins -= cost;
+            player.CountCoins -= type.Cost;
             CurrentPlayer.OperatingMode = "buy_object";
+            CurrentPlayer.TypePurchasedObject = type;
             CurrentPlayer.PurchasedObject = prefab;
         }
     }
     public void BuyTurretButton(int playerNumber)
     {
-        BuyButton(turretCost, _turretPrefab, playerNumber);
+        Object turret = new Turret(playerNumber, new Point(1, 0));
+        BuyButton(turret, _turretPrefab, playerNumber);
     } 
     
     public void BuyBlockButton(int playerNumber)
     {
-        BuyButton(blockCost, _blockPrefab, playerNumber);
+        Object block = new Block(playerNumber);
+        BuyButton(block, _blockPrefab, playerNumber);
     } 
 
 }

@@ -11,6 +11,11 @@ public static class MapObject
         return _map[p.x, p.y];
     }
 
+    public static void DeleteObject(Point p)
+    {
+        _map[p.x, p.y] = null;
+    }
+
     public static void SetObject(Object value, Point p)
     {
         if (!CheckCoord(new Point(p.x, p.y)) || _map[p.x, p.y] != null)
@@ -22,10 +27,6 @@ public static class MapObject
     public static void MakeMapObject()
     {
         _map = new Object[_size, _size];
-        _map[0, 0] = new Chip(0);
-        _map[_size - 1, _size - 1] = new Chip(0);
-        _map[_size - 1, 0] = new Chip(1);
-        _map[0, _size - 1] = new Chip(1);
     }
 
     private static bool CheckCoord(Point p)

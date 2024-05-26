@@ -16,19 +16,23 @@ public class Player
         if (_coordChip[chipNumber] == new Point(-1, -1));
         {
             _coordChip[chipNumber] = coord;
+            MapObject.SetObject(new Chip(_playerNumber), coord);
         }
     }
 
     public bool CanMoveChip(int ind, Point p)
     {
-        return !MapObject.IsDealtDamage(p, _playerNumber) && (p.GetDistSquared(_coordChip[ind]) == 1);
+        return !MapObject.IsDealtDamage(p, _playerNumber) && 
+               (p.GetDistSquared(_coordChip[ind]) == 1) &&
+               MapObject.GetObject(p) == null;
     }
     public void MoveChip(int ind, Point p)
     {
-        _coordChip[ind].x = p.x;
-        _coordChip[ind].y = p.y;
+        MapObject.DeleteObject(_coordChip[ind]);
+        _coordChip[ind] = p;
+        MapObject.SetObject(new Chip(_playerNumber), _coordChip[ind]);
+
         CountCoins += MapCoins.GetCoinValue(p);
-        Debug.Log(CountCoins);
         MapCoins.DeleteCoin(p);
     }
 

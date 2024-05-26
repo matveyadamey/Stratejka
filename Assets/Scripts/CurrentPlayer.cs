@@ -11,6 +11,7 @@ public static class CurrentPlayer
     public static Movement MovementChip { get; set; } = null;
     // "buy_object"
     public static GameObject PurchasedObject { get; set; } = null;
+    public static Object TypePurchasedObject { get; set; } = null;
     //==========================================================================
 
 

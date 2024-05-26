@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, target, _speed * Time.deltaTime);
             yield return null;
         }
+        transform.position = target;
+        yield return null;
         CurrentPlayer.OperatingMode = "expectation";
         CurrentPlayer.MovementChip = null;
         Highlighter.HighlightOff(gameObject);
