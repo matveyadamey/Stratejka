@@ -731,6 +731,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2262141489752377766, guid: da93562263ca63044b001c781ed71c7e, type: 3}
+      propertyPath: blockCost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262141489752377766, guid: da93562263ca63044b001c781ed71c7e, type: 3}
+      propertyPath: turretCost
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3609219126879632723, guid: da93562263ca63044b001c781ed71c7e, type: 3}
       propertyPath: m_Name
       value: Canvas
