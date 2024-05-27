@@ -29,7 +29,7 @@ public static class MapObject
         _map = new Object[_size, _size];
     }
 
-    private static bool CheckCoord(Point p)
+    public static bool CheckCoord(Point p)
     {
         return 0 <= p.x && p.x < _size && 0 <= p.y && p.y < _size;
     }

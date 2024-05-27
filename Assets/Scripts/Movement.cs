@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Drawing;
 using UnityEngine;
 public class Movement : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class Movement : MonoBehaviour {
     [SerializeField] private Raycaster raycaster;
     private IEnumerator MoveObject(Vector3 target)
     {
+        Vector3 pos = gameObject.transform.position;
+        Point point = new Point((int)pos.x, (int)pos.z);
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
             transform.position = Vector3.Lerp(transform.position, target, _speed * Time.deltaTime);
@@ -18,6 +21,7 @@ public class Movement : MonoBehaviour {
         CurrentPlayer.OperatingMode = "expectation";
         CurrentPlayer.MovementChip = null;
         Highlighter.HighlightOff(gameObject);
+        Highlighter.CanMoveChipOff(point);
     }
     public void Move(Point target)
     {
@@ -33,6 +37,8 @@ public class Movement : MonoBehaviour {
 
     void OnMouseDown()
     {
+        Vector3 pos = gameObject.transform.position;
+        Point point = new Point((int)pos.x, (int)pos.z);
         if (CurrentPlayer.CurrentPlayerNumber == playerNumber)
         {
             if(CurrentPlayer.OperatingMode == "movement_chip" && CurrentPlayer.MovementChip == this)
@@ -40,6 +46,7 @@ public class Movement : MonoBehaviour {
                 CurrentPlayer.OperatingMode = "expectation";
                 CurrentPlayer.MovementChip = null;
                 Highlighter.HighlightOff(gameObject);
+                Highlighter.CanMoveChipOff(point);
             }
             else
             {
@@ -47,21 +54,14 @@ public class Movement : MonoBehaviour {
                 {
                     GameObject prevObject = CurrentPlayer.MovementChip.gameObject;
                     Highlighter.HighlightOff(prevObject);
+                    Highlighter.CanMoveChipOff(point);
                 }
 
                 CurrentPlayer.OperatingMode = "movement_chip";
                 CurrentPlayer.MovementChip = this;
                 Highlighter.HighlightOn(gameObject);
+                Highlighter.CanMoveChipOn(point);
             }
-
-            /*
-            GameObject clickedObject = Raycaster.LastClicks[playerNumber];
-            Highlighter.HighlightOn(gameObject);
-            Vector3 clickPosition = clickedObject.transform.position;
-            Point lastClick = new Point((int)clickPosition.x, (int)clickPosition.z);
-            move(lastClick);
-            Highlighter.HighlightOff(clickedObject);
-            */
         }
     }
 }

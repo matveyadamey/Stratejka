@@ -26,6 +26,14 @@ public class Player
                (p.GetDistSquared(_coordChip[ind]) == 1) &&
                MapObject.GetObject(p) == null;
     }
+
+    public bool CanMoveChip(Point chip, Point p)
+    {
+        return !MapObject.IsDealtDamage(p, _playerNumber) &&
+               (p.GetDistSquared(chip) == 1) &&
+               MapObject.GetObject(p) == null;
+    }
+
     public void MoveChip(int ind, Point p)
     {
         MapObject.DeleteObject(_coordChip[ind]);

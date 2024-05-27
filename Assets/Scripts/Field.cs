@@ -15,6 +15,11 @@ public static class Field
         _coordNet[point.x][point.y].GetComponent<Renderer>().material = material;
     }
 
+    public static GameObject GetGameObjectCall(Point p)
+    {
+        return _coordNet[p.x][p.y];
+    }
+
     public static void FieldSpawn()
     {
         for (int i = 0; i < Size; i++)
