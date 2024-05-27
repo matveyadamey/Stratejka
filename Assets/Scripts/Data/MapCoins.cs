@@ -2,7 +2,7 @@ using System;
 public static class MapCoins
 {
     private static int _size = StartGame.Size;
-    public static Coin[,] _coinsNet;
+    private static Coin[,] _coinsNet;
 
     private static int GetLayerCount(Point p)
     {
@@ -21,7 +21,15 @@ public static class MapCoins
         {
             for (int j = 0; j < _size; j++)
             {
-                _coinsNet[i,j] = new Coin(GetLayerCount(new Point(i, j)));
+                if((i == j && (j == 0 || j == _size - 1)) || (Math.Min(i, j) == 0 && Math.Max(i, j) == _size))
+                {
+                    _coinsNet[i, j] = new Coin(0);
+                }
+                else
+                {
+                    _coinsNet[i,j] = new Coin(GetLayerCount(new Point(i, j)));
+                }
+                
             }
         }
     }

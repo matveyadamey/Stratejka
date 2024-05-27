@@ -53,8 +53,9 @@ public class Movement : MonoBehaviour {
                 if(CurrentPlayer.MovementChip != null)
                 {
                     GameObject prevObject = CurrentPlayer.MovementChip.gameObject;
+                    Vector3 prevPos = prevObject.transform.position;
                     Highlighter.HighlightOff(prevObject);
-                    Highlighter.CanMoveChipOff(point);
+                    Highlighter.CanMoveChipOff(new Point((int)prevPos.x, (int)prevPos.z));
                 }
 
                 CurrentPlayer.OperatingMode = "movement_chip";

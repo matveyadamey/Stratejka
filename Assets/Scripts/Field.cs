@@ -40,7 +40,7 @@ public static class Field
         {
             for (int j = 0; j < Size; j++)
             {
-                if (MapCoins._coinsNet[i, j].coinCount > 0)
+                if (MapCoins.GetCoinValue(new Point(i, j)) > 0)
                 {
                     UnityEngine.Object.Instantiate(StartGame.CoinPrefab, new Vector3(i, 1, j), Quaternion.identity, StartGame.CoinParent);
                 }

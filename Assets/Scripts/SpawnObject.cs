@@ -11,8 +11,7 @@ public class _SpawnObject : MonoBehaviour
     {
         Instantiate(prefab, pos, Quaternion.identity);
 
-        int playerNumber = CurrentPlayer.CurrentPlayerNumber;
-        Player player = PlayersContainer.Players[playerNumber];
+        Player player = PlayersContainer.Players[CurrentPlayer.CurrentPlayerNumber];
         player.BuyObject(type, new Point((int)pos.x, (int)pos.z));
     }
 }

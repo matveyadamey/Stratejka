@@ -28,13 +28,13 @@ public class StartGame : MonoBehaviour
         Field.FieldSpawn();
         MapObject.MakeMapObject();
         MapCoins.MakeMapCoins();
-        Field.CoinsSpawn();
+        Field.CoinsSpawn(); // коины спавнятся туда, где они есть в MаpCoins
         PlayersContainer.MakePlayers();
 
         PlayersContainer.Players[0].SetCoordChip(0, new Point(0, 0));
-        PlayersContainer.Players[0].SetCoordChip(1, new Point(9, 9));
-        PlayersContainer.Players[1].SetCoordChip(0, new Point(0, 9));
-        PlayersContainer.Players[1].SetCoordChip(1, new Point(9, 0));
+        PlayersContainer.Players[0].SetCoordChip(1, new Point(Size - 1, Size - 1));
+        PlayersContainer.Players[1].SetCoordChip(0, new Point(0, Size - 1));
+        PlayersContainer.Players[1].SetCoordChip(1, new Point(Size - 1, 0));
     }
 
 }

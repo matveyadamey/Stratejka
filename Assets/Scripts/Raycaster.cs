@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Raycaster : MonoBehaviour
 {
-    //public static GameObject[] LastClicks=new GameObject[2];
-
     private void FixedUpdate()
     {
         if (Input.GetMouseButtonUp(0))
@@ -15,10 +13,10 @@ public class Raycaster : MonoBehaviour
             {
                 GameObject click = hit.collider.gameObject;
 
-                Debug.Log(click.tag);
                 if (click.tag == "Cell" || click.tag == "coins")
                 {
                     Vector3 clickPosition = click.transform.position;
+
                     if (CurrentPlayer.OperatingMode == "movement_chip")
                     {
                         Point lastClick = new Point((int)clickPosition.x, (int)clickPosition.z);
