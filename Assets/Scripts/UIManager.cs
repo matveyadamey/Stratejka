@@ -24,10 +24,13 @@ public class UIManager : MonoBehaviour
         Player player = PlayersContainer.Players[playerNumber];
         if (player.CountCoins >= type.Cost)
         {
-            GameObject prevObject = CurrentPlayer.MovementChip.gameObject;
-            Vector3 prevPos = prevObject.transform.position;
-            Highlighter.HighlightOff(prevObject);
-            Highlighter.CanMoveChipOff(new Point((int)prevPos.x, (int)prevPos.z));
+            if (CurrentPlayer.OperatingMode == "movement_chip")
+            {
+                GameObject prevObject = CurrentPlayer.MovementChip.gameObject;
+                Vector3 prevPos = prevObject.transform.position;
+                Highlighter.HighlightOff(prevObject);
+                Highlighter.CanMoveChipOff(new Point((int)prevPos.x, (int)prevPos.z));
+            }
 
             CurrentPlayer.OperatingMode = "buy_object";
             CurrentPlayer.TypePurchasedObject = type;

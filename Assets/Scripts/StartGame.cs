@@ -7,11 +7,13 @@ public class StartGame : MonoBehaviour
     public const int RadiusAttack = 1;
     public const int PlayersCount = 2;
     public const int ChipsCount = 2;
+    public static Material CanMoveMaterial;
     public static Material[] Materials;
     public static GameObject CubePrefab;
     public static Transform CubeField;
     public static GameObject CoinPrefab;
     public static Transform CoinParent;
+    [SerializeField] private Material _canMoveMaterial;
     [SerializeField] private Material[] _materials;
     [SerializeField] private GameObject _cubePrefab;
     [SerializeField] private Transform _cubeField;
@@ -19,6 +21,7 @@ public class StartGame : MonoBehaviour
     [SerializeField] private Transform _coinParent;
     void Awake()
     {
+        CanMoveMaterial = _canMoveMaterial;
         Materials = _materials;
         CubePrefab = _cubePrefab;
         CubeField = _cubeField;

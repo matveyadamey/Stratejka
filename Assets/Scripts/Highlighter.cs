@@ -23,8 +23,8 @@ public class Highlighter : MonoBehaviour
                 Player player = PlayersContainer.Players[CurrentPlayer.CurrentPlayerNumber];
                 if (MapObject.CheckCoord(posMove) && player.CanMoveChip(pos, posMove))
                 {
-                    GameObject obj = Field.GetGameObjectCall(posMove);
-                    obj.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                    //GameObject obj = Field.GetGameObjectCall(posMove);
+                    Field.SetCellMaterial(posMove, StartGame.CanMoveMaterial);
                 }
             }
         }
@@ -36,14 +36,13 @@ public class Highlighter : MonoBehaviour
         {
             for (int y = pos.y - 1; y <= pos.y + 1; y++)
             {
-                Point point = new Point(x, y);
-                if (!MapObject.CheckCoord(point))
+                Point p = new Point(x, y);
+                if (!MapObject.CheckCoord(p))
                 {
                     continue;
                 }
-
-                GameObject obj = Field.GetGameObjectCall(point);
-                obj.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+                //GameObject obj = Field.GetGameObjectCall(p);
+                Field.SetCellMaterial(p, StartGame.Materials[Field.GetCellLayer(p)]);
             }
         }
     }

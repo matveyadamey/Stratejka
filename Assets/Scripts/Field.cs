@@ -10,7 +10,7 @@ public static class Field
     {
         return Mathf.Min(Mathf.Min(point.x, Size - point.x - 1), Mathf.Min(point.y, Size - point.y - 1));
     }
-    private static void SetCellMaterial(Point point, Material material)
+    public static void SetCellMaterial(Point point, Material material)
     {
         _coordNet[point.x][point.y].GetComponent<Renderer>().material = material;
     }
