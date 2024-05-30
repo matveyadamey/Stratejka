@@ -3,7 +3,7 @@
 class Turret : Object
 {
     public override string Type { get; } = "turret";
-    public override int Cost { get; } = 5;
+    public override int Cost { get; } = 0;
     public override int PlayerNumber { get; }
 
     private Point _direction;

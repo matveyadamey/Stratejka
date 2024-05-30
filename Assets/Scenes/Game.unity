@@ -4583,14 +4583,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25011599ec0ea0439e8f5e97a17df54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canMoveMaterial: {fileID: 0}
+  _canMoveMaterial: {fileID: 2100000, guid: 281d0e41beee1434ab0e2ab609b954df, type: 2}
   _materials:
   - {fileID: 2100000, guid: 04da52fcff48d2748a7e0422c07871a1, type: 2}
   - {fileID: 2100000, guid: 281d0e41beee1434ab0e2ab609b954df, type: 2}
   - {fileID: 2100000, guid: 4cda8241ce2bcc54e96145e35394847d, type: 2}
   - {fileID: 2100000, guid: f73483774b125be41842502d672645e5, type: 2}
   - {fileID: 2100000, guid: d1ca5fd28f02ed540a005c92c2411942, type: 2}
-  _cubePrefab: {fileID: 4434183213483943795, guid: 31ead5c418af84142a5795774b4a67cc, type: 3}
+  _cubePrefab: {fileID: 4434183213483943795, guid: 3f8a4fc3cdf601b4d8fe3cdc89912e23, type: 3}
   _cubeField: {fileID: 63917450}
   _coinPrefab: {fileID: 7042462938848942815, guid: 1c764e7581c6e9246a5260b69b940aa7, type: 3}
   _coinParent: {fileID: 885158055}
@@ -8256,6 +8256,10 @@ PrefabInstance:
       propertyPath: turretCost
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2262141489752377766, guid: da93562263ca63044b001c781ed71c7e, type: 3}
+      propertyPath: _turretPrefab
+      value: 
+      objectReference: {fileID: 6461996372499672702, guid: 7f9169bc6064cf140bef53164bf0b84e, type: 3}
     - target: {fileID: 2262141489752377766, guid: da93562263ca63044b001c781ed71c7e, type: 3}
       propertyPath: BuildingPanel1
       value: 
