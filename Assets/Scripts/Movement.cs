@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour {
     [SerializeField] private int playerNumber;
     [SerializeField] private int chipNumber;
     [SerializeField] private Raycaster raycaster;
+
     private IEnumerator MoveObject(Vector3 target)
     {
         Vector3 pos = gameObject.transform.position;

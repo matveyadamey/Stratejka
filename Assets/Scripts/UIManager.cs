@@ -9,12 +9,30 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text Money1;
     [SerializeField] private Text Money2;
 
+    [SerializeField] private GameObject BuildingPanel1;
+    [SerializeField] private GameObject BuildingPanel2;
+
     private void Update()
     {
+        int playerNumber;
+        playerNumber = CurrentPlayer.CurrentPlayerNumber;
+
+
         Player player1 = PlayersContainer.Players[0];
         Player player2 = PlayersContainer.Players[1];
         Money1.text = player1.CountCoins.ToString();
         Money2.text = player2.CountCoins.ToString();
+
+        if (playerNumber == 0)
+        {
+            BuildingPanel2.SetActive(false);
+            BuildingPanel1.SetActive(true);
+        }
+        else
+        {
+            BuildingPanel2.SetActive(true);
+            BuildingPanel1.SetActive(false);
+        }
     }
 
     public void BuyButton(Object type, GameObject prefab, int playerNumber)
