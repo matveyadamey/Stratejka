@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
+using UnityEngine;
 
 public static class MapObject
 {
     private static int _size = StartGame.Size;
-    private static int _radiusOfDefeat;
+    private static int _radiusOfDefeat = 1;
     public static Object[,] _map;
 
     public static Object GetObject(Point p)
@@ -29,7 +31,7 @@ public static class MapObject
         _map = new Object[_size, _size];
     }
 
-    private static bool CheckCoord(Point p)
+    public static bool CheckCoord(Point p)
     {
         return 0 <= p.x && p.x < _size && 0 <= p.y && p.y < _size;
     }
@@ -45,7 +47,7 @@ public static class MapObject
             for (int j = -_radiusOfDefeat; j <= _radiusOfDefeat; j++)
             {
                 Point checkСell = new Point(p.x - i, p.y - j);
-                if (!CheckCoord(checkСell) || _map[checkСell.x, checkСell.y] == null || _map[checkСell.x, checkСell.y].PlayerNumber != ind) 
+                if (!CheckCoord(checkСell) || _map[checkСell.x, checkСell.y] == null || _map[checkСell.x, checkСell.y].PlayerNumber == ind) 
                 {
                     continue;
                 }

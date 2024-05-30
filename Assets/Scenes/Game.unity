@@ -3498,11 +3498,11 @@ MonoBehaviour:
       - m_Target: {fileID: 6591950424763844935}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: BuyBlockButton
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3659,9 +3659,9 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
+    m_Bias: 0
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -3688,12 +3688,12 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
+  m_ColorTemperature: 7703
+  m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
@@ -3708,7 +3708,7 @@ Transform:
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46836928, y: 0, z: 0, w: 0.8835328}
-  m_LocalPosition: {x: 4.13, y: 7.23, z: -1.26}
+  m_LocalPosition: {x: 4.13, y: 6.21, z: 3.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4062,11 +4062,11 @@ Camera:
   m_GameObject: {fileID: 800533937}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.14716971, g: 0.14716971, b: 0.14716971, a: 0}
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_Iso: 200
   m_ShutterSpeed: 0.005
   m_Aperture: 16
@@ -4084,11 +4084,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 1
   far clip plane: 1000
-  field of view: 60
+  field of view: 49.03982
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -4112,13 +4112,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800533937}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46836928, y: 0, z: 0, w: 0.8835328}
-  m_LocalPosition: {x: 4.13, y: 7.23, z: -1.26}
+  m_LocalRotation: {x: 0.69632137, y: -0.0004486105, z: -0.0003244432, w: 0.7177299}
+  m_LocalPosition: {x: 4.14, y: 13.29, z: 4.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 55.857, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 88.264, y: -2.073, z: -2.063}
 --- !u!1 &823634866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,11 +4205,11 @@ MonoBehaviour:
       - m_Target: {fileID: 6591950424763844935}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: BuyTurretButton
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8222,6 +8222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1473161719674680274, guid: da93562263ca63044b001c781ed71c7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2262141489752377766, guid: da93562263ca63044b001c781ed71c7e, type: 3}
       propertyPath: Money1
       value: 
@@ -8230,6 +8234,14 @@ PrefabInstance:
       propertyPath: Money2
       value: 
       objectReference: {fileID: 1707091059}
+    - target: {fileID: 2262141489752377766, guid: da93562263ca63044b001c781ed71c7e, type: 3}
+      propertyPath: blockCost
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262141489752377766, guid: da93562263ca63044b001c781ed71c7e, type: 3}
+      propertyPath: turretCost
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2753434858395408179, guid: da93562263ca63044b001c781ed71c7e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 144.1
@@ -8389,6 +8401,10 @@ PrefabInstance:
     - target: {fileID: 7435753899423741316, guid: da93562263ca63044b001c781ed71c7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212685830794171801, guid: da93562263ca63044b001c781ed71c7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8257827146110965100, guid: da93562263ca63044b001c781ed71c7e, type: 3}
       propertyPath: m_Name

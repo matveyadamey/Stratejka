@@ -24,6 +24,14 @@ public class UIManager : MonoBehaviour
         Player player = PlayersContainer.Players[playerNumber];
         if (player.CountCoins >= type.Cost)
         {
+            if (CurrentPlayer.OperatingMode == "movement_chip")
+            {
+                GameObject prevObject = CurrentPlayer.MovementChip.gameObject;
+                Vector3 prevPos = prevObject.transform.position;
+                Highlighter.HighlightOff(prevObject);
+                Highlighter.CanMoveChipOff(new Point((int)prevPos.x, (int)prevPos.z));
+            }
+
             CurrentPlayer.OperatingMode = "buy_object";
             CurrentPlayer.TypePurchasedObject = type;
             CurrentPlayer.PurchasedObject = prefab;
@@ -31,7 +39,7 @@ public class UIManager : MonoBehaviour
     }
     public void BuyTurretButton(int playerNumber)
     {
-        Object turret = new Turret(playerNumber, new Point(1, 0));
+        Object turret = new Turret(playerNumber, new Point(0, 1));
         BuyButton(turret, _turretPrefab, playerNumber);
     } 
     

@@ -10,9 +10,14 @@ public static class Field
     {
         return Mathf.Min(Mathf.Min(point.x, Size - point.x - 1), Mathf.Min(point.y, Size - point.y - 1));
     }
-    private static void SetCellMaterial(Point point, Material material)
+    public static void SetCellMaterial(Point point, Material material)
     {
         _coordNet[point.x][point.y].GetComponent<Renderer>().material = material;
+    }
+
+    public static GameObject GetGameObjectCall(Point p)
+    {
+        return _coordNet[p.x][p.y];
     }
 
     public static void FieldSpawn()
@@ -35,7 +40,7 @@ public static class Field
         {
             for (int j = 0; j < Size; j++)
             {
-                if (MapCoins._coinsNet[i, j].coinCount > 0)
+                if (MapCoins.GetCoinValue(new Point(i, j)) > 0)
                 {
                     UnityEngine.Object.Instantiate(StartGame.CoinPrefab, new Vector3(i, 1, j), Quaternion.identity, StartGame.CoinParent);
                 }
