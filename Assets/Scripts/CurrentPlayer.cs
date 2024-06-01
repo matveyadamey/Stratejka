@@ -17,6 +17,7 @@ public static class CurrentPlayer
 
     public static void NextPlayer()
     {
+        UIManager.UpdateUI();
         CurrentPlayerNumber = (CurrentPlayerNumber + 1) % playersCount;
     }
 }

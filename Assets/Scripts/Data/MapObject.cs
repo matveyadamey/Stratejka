@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using UnityEngine;
 
 public static class MapObject
 {
@@ -20,7 +18,7 @@ public static class MapObject
 
     public static void SetObject(Object value, Point p)
     {
-        if (!CheckCoord(new Point(p.x, p.y)) || _map[p.x, p.y] != null)
+        if (!IsCoordValid(new Point(p.x, p.y)) || _map[p.x, p.y] != null)
         {
             throw new ArgumentOutOfRangeException();
         }
@@ -31,14 +29,14 @@ public static class MapObject
         _map = new Object[_size, _size];
     }
 
-    public static bool CheckCoord(Point p)
+    public static bool IsCoordValid(Point p)
     {
         return 0 <= p.x && p.x < _size && 0 <= p.y && p.y < _size;
     }
 
     public static bool IsDealtDamage(Point p, int ind)
     {
-        if (!CheckCoord(p))
+        if (!IsCoordValid(p))
         {
             throw new ArgumentOutOfRangeException();
         }
@@ -47,7 +45,7 @@ public static class MapObject
             for (int j = -_radiusOfDefeat; j <= _radiusOfDefeat; j++)
             {
                 Point checkСell = new Point(p.x - i, p.y - j);
-                if (!CheckCoord(checkСell) || _map[checkСell.x, checkСell.y] == null || _map[checkСell.x, checkСell.y].PlayerNumber == ind) 
+                if (!IsCoordValid(checkСell) || _map[checkСell.x, checkСell.y] == null || _map[checkСell.x, checkСell.y].PlayerNumber == ind) 
                 {
                     continue;
                 }

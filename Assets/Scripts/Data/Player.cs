@@ -1,4 +1,4 @@
-using UnityEngine;
+using System.Collections.Generic;
 public class Player
 {
     public int CountCoins = 0;
@@ -20,28 +20,46 @@ public class Player
         }
     }
 
-    public bool CanMoveChip(int ind, Point p)
+    public bool CanMoveChip(int chipIndex, Point placeMoveTo)
     {
-        return !MapObject.IsDealtDamage(p, _playerNumber) && 
-               (p.GetDistSquared(_coordChip[ind]) == 1) &&
-               MapObject.GetObject(p) == null;
+        return MapObject.IsCoordValid(placeMoveTo) && !MapObject.IsDealtDamage(placeMoveTo, _playerNumber) && 
+               (placeMoveTo.GetDistSquared(_coordChip[chipIndex]) == 1) &&
+               MapObject.GetObject(placeMoveTo) == null;
+    }
+    public List<Point> GetPossiblePlacesMoveTo(int chipIndex)
+    {
+        List<Point> possiblePlacesMoveTo= new List<Point>();
+        Point chipPosition = _coordChip[chipIndex];
+
+        int left = chipPosition.x - 1;
+        int right = chipPosition.x + 1;
+        int up = chipPosition.y + 1;
+        int down = chipPosition.y - 1;
+
+        for (int x = left; x <= right; x++)
+        {
+            for (int y = down; y <= up; y++)
+            {
+                Point possiblePlaceMoveTo = new Point(x, y);
+
+                if (CanMoveChip(chipIndex, possiblePlaceMoveTo))
+                {
+                    possiblePlacesMoveTo.Add(possiblePlaceMoveTo);
+                }
+            }
+        }
+        return possiblePlacesMoveTo;
     }
 
-    public bool CanMoveChip(Point chip, Point p)
-    {
-        return !MapObject.IsDealtDamage(p, _playerNumber) &&
-               (p.GetDistSquared(chip) == 1) &&
-               MapObject.GetObject(p) == null;
-    }
 
-    public void MoveChip(int ind, Point p)
+    public void MoveChip(int chipIndex, Point placeMoveTo)
     {
-        MapObject.DeleteObject(_coordChip[ind]);
-        _coordChip[ind] = p;
-        MapObject.SetObject(new Chip(_playerNumber), _coordChip[ind]);
+        MapObject.DeleteObject(_coordChip[chipIndex]);
+        _coordChip[chipIndex] = placeMoveTo;
+        MapObject.SetObject(new Chip(_playerNumber), _coordChip[chipIndex]);
 
-        CountCoins += MapCoins.GetCoinValue(p);
-        MapCoins.DeleteCoin(p);
+        CountCoins += MapCoins.GetCoinValue(placeMoveTo);
+        MapCoins.DeleteCoin(placeMoveTo);
     }
 
     public bool CanBuyObject(Object type, Point p)

@@ -3,23 +3,26 @@ using UnityEngine;
 public class Raycaster : MonoBehaviour
 {
     Vector3 clickPosition;
-    bool hasPlaceForTurretChosen = false;
 
-    void ifTurret(GameObject click)
+    /*
+    bool hasPlaceForTurretChosen = false;
+    void ifTurret(Vector3 click)
     {
         if (hasPlaceForTurretChosen)
         {
-            float y_angle = Vector3.Angle(Vector3.right, clickPosition - click.transform.position);
+            float y_angle = Vector3.Angle(Vector3.right, clickPosition - click);
             Quaternion rotation = Quaternion.Euler(0, y_angle, 0);
             ObjectSpawner.SpawnObject(CurrentPlayer.TypePurchasedObject, CurrentPlayer.PurchasedObject, clickPosition, rotation);
         }
         else
         {
             print("выберите направление турели");
-            clickPosition = click.transform.position;
+            clickPosition = click;
             hasPlaceForTurretChosen = true;
         }
     }
+    */
+
     void moveChip()
     {
         Point lastClick = new Point((int)clickPosition.x, (int)clickPosition.z);
@@ -27,7 +30,6 @@ public class Raycaster : MonoBehaviour
     }
     void buyObject()
     {
-
         Vector3 place = new Vector3(clickPosition.x, 1, clickPosition.z);
 
         Player player = PlayersContainer.Players[CurrentPlayer.CurrentPlayerNumber];
@@ -38,7 +40,14 @@ public class Raycaster : MonoBehaviour
             return;
         }
 
+        Field.DeleteCoin(p);
+
         ObjectSpawner.SpawnObject(CurrentPlayer.TypePurchasedObject, CurrentPlayer.PurchasedObject, place, Quaternion.identity);
+
+        CurrentPlayer.OperatingMode = "expectation";
+        CurrentPlayer.TypePurchasedObject = null;
+        CurrentPlayer.PurchasedObject = null;
+        CurrentPlayer.NextPlayer();
     }
     void OnClick()
     {
@@ -53,11 +62,6 @@ public class Raycaster : MonoBehaviour
                 break;
 
         }
-
-        CurrentPlayer.OperatingMode = "expectation";
-        CurrentPlayer.TypePurchasedObject = null;
-        CurrentPlayer.PurchasedObject = null;
-        CurrentPlayer.NextPlayer();
     }
 
     private void FixedUpdate()
@@ -70,19 +74,15 @@ public class Raycaster : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 GameObject click = hit.collider.gameObject;
-
-                if (click.transform.position != clickPosition)
+                if ((CurrentPlayer.PurchasedObject != null & CurrentPlayer.TypePurchasedObject != null) || CurrentPlayer.MovementChip != null)
                 {
-
-                    if (CurrentPlayer.TypePurchasedObject.Type == "turret")
+                    if (click.transform.position != clickPosition)
                     {
-                        ifTurret(click);
-                    }
-
-                    else if (click.tag == "Cell")
-                    {
-                        clickPosition = click.transform.position;
-                        OnClick();
+                        if (click.tag == "Cell")
+                        {
+                            clickPosition = click.transform.position;
+                            OnClick();
+                        }
                     }
                 }
             }

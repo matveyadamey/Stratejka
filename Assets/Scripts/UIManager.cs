@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,65 +7,54 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _blockPrefab;
     [SerializeField] private GameObject _turretPrefab;
-    [SerializeField] private Text Money1;
-    [SerializeField] private Text Money2;
 
-    [SerializeField] private GameObject BuildingPanel1;
-    [SerializeField] private GameObject BuildingPanel2;
+    static Player player1;
+    static Player player2;
 
-    private void Update()
+    private void Start()
     {
-        int playerNumber;
-        playerNumber = CurrentPlayer.CurrentPlayerNumber;
+        player1 = PlayersContainer.Players[0];
+        player2 = PlayersContainer.Players[1];
 
+    }
+    public static void UpdateUI()
+    {
+        bool boolPlayerNumber = Convert.ToBoolean(CurrentPlayer.CurrentPlayerNumber);
 
-        Player player1 = PlayersContainer.Players[0];
-        Player player2 = PlayersContainer.Players[1];
-        Money1.text = player1.CountCoins.ToString();
-        Money2.text = player2.CountCoins.ToString();
-
-        if (playerNumber == 0)
-        {
-            BuildingPanel2.SetActive(false);
-            BuildingPanel1.SetActive(true);
-        }
-        else
-        {
-            BuildingPanel2.SetActive(true);
-            BuildingPanel1.SetActive(false);
-        }
+        StartGame.Money1.text = player1.CountCoins.ToString();
+        StartGame.Money2.text = player2.CountCoins.ToString();
+        StartGame.BuildingPanel1.SetActive(boolPlayerNumber);
+        StartGame.BuildingPanel2.SetActive(!boolPlayerNumber);
     }
 
-    public void BuyButton(Object type, GameObject prefab, int playerNumber)
+    public void BuyButton(Object type, GameObject prefab)
     {
-        if (playerNumber != CurrentPlayer.CurrentPlayerNumber) return;
 
-        Player player = PlayersContainer.Players[playerNumber];
+        Player player = PlayersContainer.Players[CurrentPlayer.CurrentPlayerNumber];
+
         if (player.CountCoins >= type.Cost)
         {
-            if (CurrentPlayer.OperatingMode == "movement_chip")
-            {
-                GameObject prevObject = CurrentPlayer.MovementChip.gameObject;
-                Vector3 prevPos = prevObject.transform.position;
-                Highlighter.HighlightOff(prevObject);
-                Highlighter.CanMoveChipOff(new Point((int)prevPos.x, (int)prevPos.z));
-            }
-
             CurrentPlayer.OperatingMode = "buy_object";
             CurrentPlayer.TypePurchasedObject = type;
             CurrentPlayer.PurchasedObject = prefab;
+            print("bought");
+        }
+        else
+        {
+            print("insufficient money");
         }
     }
-    public void BuyTurretButton(int playerNumber)
+
+    public void BuyTurretButton()
     {
-        Object turret = new Turret(playerNumber, new Point(0, 1));
-        BuyButton(turret, _turretPrefab, playerNumber);
+        Object turret = new Turret(CurrentPlayer.CurrentPlayerNumber, new Point(0, 1));
+        BuyButton(turret, _turretPrefab);
     } 
     
-    public void BuyBlockButton(int playerNumber)
+    public void BuyBlockButton()
     {
-        Object block = new Block(playerNumber);
-        BuyButton(block, _blockPrefab, playerNumber);
+        Object block = new Block(CurrentPlayer.CurrentPlayerNumber);
+        BuyButton(block, _blockPrefab);
     } 
 
 }
