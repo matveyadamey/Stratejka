@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a36b85dd7578a49b94607a5ac3f30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 10
   playerNumber: 1
   chipNumber: 0
   raycaster: {fileID: 0}
@@ -257,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a36b85dd7578a49b94607a5ac3f30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 10
   playerNumber: 1
   chipNumber: 1
   raycaster: {fileID: 0}
@@ -393,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a36b85dd7578a49b94607a5ac3f30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 10
   playerNumber: 0
   chipNumber: 0
   raycaster: {fileID: 0}
@@ -564,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a36b85dd7578a49b94607a5ac3f30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 10
   playerNumber: 0
   chipNumber: 1
   raycaster: {fileID: 0}
