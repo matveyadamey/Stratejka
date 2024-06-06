@@ -3,15 +3,14 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-    private static int _materialsCount = 5;
     public const int Size = 10;
     public const int RadiusAttack = 1;
     public const int PlayersCount = 2;
     public const int ChipsCount = 2;
     public static Material CanMoveMaterial;
     public static Material[] Materials;
-    public static GameObject CubePrefab;
-    public static Transform CubeField;
+    public static GameObject CellPrefab;
+    public static Transform CellParent;
     public static GameObject CoinPrefab;
     public static Transform CoinParent;
     public static Text Money1;
@@ -27,16 +26,16 @@ public class StartGame : MonoBehaviour
     [SerializeField] private GameObject _buildingPanel2;
     [SerializeField] private Material _canMoveMaterial;
     [SerializeField] private Material[] _materials;
-    [SerializeField] private GameObject _cubePrefab;
-    [SerializeField] private Transform _cubeField;
+    [SerializeField] private GameObject _cellPrefab;
+    [SerializeField] private Transform _cellParent;
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private Transform _coinParent;
     void Awake()
     {
         CanMoveMaterial = _canMoveMaterial;
         Materials = _materials;
-        CubePrefab = _cubePrefab;
-        CubeField = _cubeField;
+        CellPrefab = _cellPrefab;
+        CellParent = _cellParent;
         CoinPrefab = _coinPrefab;
         CoinParent = _coinParent;
         Money1 = _money1;

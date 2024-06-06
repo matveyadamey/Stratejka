@@ -41,7 +41,7 @@ public static class Field
                     _coinsCoordNet[i][j] = coin;
                 }
 
-                GameObject cube = UnityEngine.Object.Instantiate(StartGame.CubePrefab, new Vector3(i, 0, j), Quaternion.identity, StartGame.CubeField);
+                GameObject cube = UnityEngine.Object.Instantiate(StartGame.CellPrefab, new Vector3(i, 0, j), Quaternion.identity, StartGame.CellParent);
                 _coordNet[i][j] = cube;
                 SetCellMaterial(new Point(i, j), StartGame.Materials[GetCellLayer(new Point(i, j))]);
             }
