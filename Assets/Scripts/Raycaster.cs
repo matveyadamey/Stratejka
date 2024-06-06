@@ -3,26 +3,6 @@ using UnityEngine;
 public class Raycaster : MonoBehaviour
 {
     Vector3 clickPosition;
-
-    /*
-    bool hasPlaceForTurretChosen = false;
-    void ifTurret(Vector3 click)
-    {
-        if (hasPlaceForTurretChosen)
-        {
-            float y_angle = Vector3.Angle(Vector3.right, clickPosition - click);
-            Quaternion rotation = Quaternion.Euler(0, y_angle, 0);
-            ObjectSpawner.SpawnObject(CurrentPlayer.TypePurchasedObject, CurrentPlayer.PurchasedObject, clickPosition, rotation);
-        }
-        else
-        {
-            print("выберите направление турели");
-            clickPosition = click;
-            hasPlaceForTurretChosen = true;
-        }
-    }
-    */
-
     void moveChip()
     {
         Point lastClick = new Point((int)clickPosition.x, (int)clickPosition.z);
@@ -42,7 +22,7 @@ public class Raycaster : MonoBehaviour
 
         Field.DeleteCoin(p);
 
-        ObjectSpawner.SpawnObject(CurrentPlayer.TypePurchasedObject, CurrentPlayer.PurchasedObject, place, Quaternion.identity);
+        GameObject spawnedObject = ObjectSpawner.SpawnObject(CurrentPlayer.TypePurchasedObject, CurrentPlayer.PurchasedObject, place, Quaternion.identity);
 
         CurrentPlayer.OperatingMode = "expectation";
         CurrentPlayer.TypePurchasedObject = null;
