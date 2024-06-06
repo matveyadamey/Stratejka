@@ -4359,7 +4359,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 281d0e41beee1434ab0e2ab609b954df, type: 2}
   - {fileID: 2100000, guid: 4cda8241ce2bcc54e96145e35394847d, type: 2}
   - {fileID: 2100000, guid: f73483774b125be41842502d672645e5, type: 2}
-  - {fileID: 2100000, guid: d1ca5fd28f02ed540a005c92c2411942, type: 2}
+  - {fileID: 2100000, guid: f6cf7ba46263f7b4e952bd909a166ccf, type: 2}
   _cellPrefab: {fileID: 4434183213483943795, guid: 31ead5c418af84142a5795774b4a67cc, type: 3}
   _cellParent: {fileID: 63917450}
   _coinPrefab: {fileID: 7042462938848942815, guid: 1c764e7581c6e9246a5260b69b940aa7, type: 3}
