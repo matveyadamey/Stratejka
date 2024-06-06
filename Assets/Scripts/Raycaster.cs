@@ -64,7 +64,7 @@ public class Raycaster : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Input.GetMouseButtonUp(0))
         {
@@ -74,6 +74,7 @@ public class Raycaster : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 GameObject click = hit.collider.gameObject;
+
                 if ((CurrentPlayer.PurchasedObject != null & CurrentPlayer.TypePurchasedObject != null) || CurrentPlayer.MovementChip != null)
                 {
                     if (click.transform.position != clickPosition)
