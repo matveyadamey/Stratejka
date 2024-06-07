@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class WinCondition
 {
-    public static int IsWin()
+    public static int NumberWinningPlayer()
     {
         for (int i = 0; i < PlayersContainer.Players.Length; i++)
         {

@@ -51,7 +51,7 @@ public class Player
         return possiblePlacesMoveTo;
     }
 
-    public bool ChipsInCenter()
+    public bool IsChipsInCenter()
     {
         return Point.InCenter(_coordChip[0]) && Point.InCenter(_coordChip[1]);
     }

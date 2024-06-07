@@ -2,6 +2,10 @@
 {
     public int x;
     public int y;
+    private const int _upBorderCenter = 4;
+    private const int _downBorderCenter = 5;
+    private const int _leftBorderCenter = 4;
+    private const int _rightBorderCenter = 5;
 
     public Point(int x, int y)
     {
@@ -16,9 +20,10 @@
         return dist.x * dist.x + dist.y * dist.y;
     }
 
-    public static bool InCenter(Point p)
+    public static bool IsPointInCenter(Point p)
     {
-        return (p.x > 3 && p.x < 6) && (p.y > 3 && p.y < 6);
+        return (p.x >= _leftBorderCenter && p.x <= _rightBorderCenter) &&
+            (p.y >= _upBorderCenter && p.y <= _downBorderCenter);
     }
 
     public static Point operator -(Point a) => new Point(-a.x, -a.y);
