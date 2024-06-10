@@ -631,17 +631,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330488592}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &334117924 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8819654088619503648, guid: e6d2c024b56a9c94b9cfc46f5e2fb4db, type: 3}
-  m_PrefabInstance: {fileID: 868613363470508253}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &357479699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1254,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 88.264, y: -2.073, z: -2.063}
+--- !u!114 &834629881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7474138872279359100, guid: 143ed3165c001964b8af3790eafef1fb, type: 3}
+  m_PrefabInstance: {fileID: 1993156428855829287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &844577286 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 386072145349301232, guid: 223fd57dc7f9a9f459f91ce3cef4c1f6, type: 3}
@@ -1338,8 +1338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25011599ec0ea0439e8f5e97a17df54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _money1: {fileID: 334117924}
-  _money2: {fileID: 1707091059}
+  _money1: {fileID: 1520473307}
+  _money2: {fileID: 834629881}
   _buildingPanel1: {fileID: 1991934998}
   _buildingPanel2: {fileID: 1355560637}
   _canMoveMaterial: {fileID: 2100000, guid: b64ba664ed4a9fb45a8bb110fb1498e2, type: 2}
@@ -1664,7 +1664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1350915751
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1907,6 +1907,17 @@ Transform:
   - {fileID: 981335695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520473307 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6315786928773835627, guid: e6d2c024b56a9c94b9cfc46f5e2fb4db, type: 3}
+  m_PrefabInstance: {fileID: 868613363470508253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1666149153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 572007992979249953, guid: 044875717c96a1e4fa240d890dc980b9, type: 3}
@@ -1917,17 +1928,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 128082975361512983, guid: 044875717c96a1e4fa240d890dc980b9, type: 3}
   m_PrefabInstance: {fileID: 6201221547402293414}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1707091059 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7082498627399523002, guid: 143ed3165c001964b8af3790eafef1fb, type: 3}
-  m_PrefabInstance: {fileID: 1993156428855829287}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1723297378 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6705074689012386837, guid: 16a5365179b3a974f8f03a53bb4071ca, type: 3}
@@ -2340,6 +2340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buiding_Panel1
       objectReference: {fileID: 0}
+    - target: {fileID: 3261307640971442493, guid: e6d2c024b56a9c94b9cfc46f5e2fb4db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5785480623214047973, guid: e6d2c024b56a9c94b9cfc46f5e2fb4db, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2742,6 +2746,10 @@ PrefabInstance:
     - target: {fileID: 7830563613410725915, guid: 143ed3165c001964b8af3790eafef1fb, type: 3}
       propertyPath: m_Name
       value: Buiding_Panel2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830563613410725915, guid: 143ed3165c001964b8af3790eafef1fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8606761078293713022, guid: 143ed3165c001964b8af3790eafef1fb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
