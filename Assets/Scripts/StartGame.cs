@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,15 +13,15 @@ public class StartGame : MonoBehaviour
     public static Transform CellParent;
     public static GameObject CoinPrefab;
     public static Transform CoinParent;
-    public static TextMeshProUGUI Money1;
-    public static TextMeshProUGUI Money2;
+    public static Text Money1;
+    public static Text Money2;
     public static GameObject BuildingPanel1;
     public static GameObject BuildingPanel2;
 
 
 
-    [SerializeField] private TextMeshProUGUI _money1;
-    [SerializeField] private TextMeshProUGUI _money2;
+    [SerializeField] private Text _money1;
+    [SerializeField] private Text _money2;
     [SerializeField] private GameObject _buildingPanel1;
     [SerializeField] private GameObject _buildingPanel2;
     [SerializeField] private Material _canMoveMaterial;
